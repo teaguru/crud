@@ -1,3 +1,5 @@
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <include link rel='stylesheet' href="css/stye.css"
 <?php
 //including the database connection file
 include_once("config.php");
@@ -13,23 +15,25 @@ $result = $dbConn->query("SELECT * FROM country ORDER BY id DESC");
 </head>
 
 <body>
-<a href="add.html">Add New Data</a><br/><br/>
+<a href="add.html">Добавление новой страны</a><br/><br/>
 
-<table width='80%' border=0>
+<table class="table table-striped table-dark"  width='80%' border=0>
 
     <tr bgcolor='#CCCCCC'>
-        <td>Name</td>
-        <td>Age</td>
+     <thead class="thead-light">    
+        <td>Страна</td>
+        <td>Столица</td>
 
-        <td>Update</td>
+        <td>Обновить</td>
     </tr>
+      </thead>
     <?php
     while($row = $result->fetch(PDO::FETCH_ASSOC)) {
         echo "<tr>";
         echo "<td>".$row['countryname']."</td>";
         echo "<td>".$row['capitalname']."</td>";
 
-        echo "<td><a href=\"edit.php?id=$row[id]\">Edit</a> | <a href=\"delete.php?id=$row[id]\" onClick=\"return confirm('Are you sure you want to delete?')\">Delete</a></td>";
+        echo "<td><a href=\"edit.php?id=$row[id]\">Edit</a> | <a href=\"delete.php?id=$row[id]\" onClick=\"return confirm('Вы точно готовы удалить запись?')\">Delete</a></td>";
     }
     ?>
 </table>

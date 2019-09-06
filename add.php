@@ -10,18 +10,18 @@ include_once("config.php");
 
 if(isset($_POST['Submit'])) {
     $name = htmlspecialchars($_POST['name'], ENT_QUOTES);
-    $age = htmlspecialchars($_POST['age'], ENT_QUOTES);
+    $capital = htmlspecialchars($_POST['capital'], ENT_QUOTES);
 
 
     // checking empty fields
-    if(empty($name) || empty($age)) {
+    if(empty($name) || empty($capital)) {
 
         if(empty($name)) {
             echo "<font color='red'>Name field is empty.</font><br/>";
         }
 
-        if(empty($age)) {
-            echo "<font color='red'>Age field is empty.</font><br/>";
+        if(empty($capital)) {
+            echo "<font color='red'>Capital field is empty.</font><br/>";
         }
 
 
@@ -31,11 +31,11 @@ if(isset($_POST['Submit'])) {
         // if all the fields are filled (not empty)
 
         //insert data to database
-        $sql = "INSERT INTO country(countryname, capitalname) VALUES(:name, :age)";
+        $sql = "INSERT INTO country(countryname, capitalname) VALUES(:name, :capital)";
         $query = $dbConn->prepare($sql);
 
         $query->bindparam(':name', $name);
-        $query->bindparam(':age', $age);
+        $query->bindparam(':capital', $capital);
         $query->execute();
 
         // Alternative to above bindparam and execute
