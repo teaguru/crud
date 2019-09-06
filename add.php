@@ -5,7 +5,7 @@
 
 <body>
 <?php
-//including the database connection file
+//подключение к базе
 include_once("config.php");
 
 if(isset($_POST['Submit'])) {
@@ -13,7 +13,7 @@ if(isset($_POST['Submit'])) {
     $capital = htmlspecialchars($_POST['capital'], ENT_QUOTES);
 
 
-    // checking empty fields
+    // проверим поля на пустоту
     if(empty($name) || empty($capital)) {
 
         if(empty($name)) {
@@ -25,15 +25,12 @@ if(isset($_POST['Submit'])) {
         }
 
 
-        //link to the previous page
+        //ссылка на предыдующую страницу
         echo "<br/><a href='javascript:self.history.back();'>Go Back</a>";
     } else {
-        // if all the fields are filled (not empty)
-
-        //insert data to database
+        // при условии, что поля не пустые вносим данные в базу использую PDO
         $sql = "INSERT INTO country(countryname, capitalname) VALUES(:name, :capital)";
         $query = $dbConn->prepare($sql);
-
         $query->bindparam(':name', $name);
         $query->bindparam(':capital', $capital);
         $query->execute();
