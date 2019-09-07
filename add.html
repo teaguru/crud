@@ -1,32 +1,36 @@
 <!DOCTYPE html>
 <html>
-<meta charset="UTF-8" />
+<meta charset="UTF-8"/>
 <head>
     <title>Intervolga</title>
-     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-     <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
 
 </head>
 
 <body>
-<a href="index.php">Home</a>
-<br/><br/>
-
-<form class = "input_form" action="add.php" method="post" name="form1">
-    <table class="table table-striped table-dark" border="0">
-        <tr>
-            <td>Название страны</td>
-            <td><input  class="form_input"  pattern="^[A-Za-zА-Яа-яЁё\s-]+$" class='fas fa-book' type="text" name="name"></td>
-        </tr>
-        <tr>
-            <td>Столица</td>
-            <td><input type="text"  pattern="^[A-Za-zА-Яа-яЁё\s-]+$" name="capital"></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td><input class='btn-success' type="submit" name="Submit" value="Add"></td>
-        </tr>
-    </table>
+<div class="container">
+    <h2 class="menu">
+        <a href="index.php"> Увидеть список стран</a></h2>
+    <br/><br/>
+    <div class="menu"><h3>Добавить новую страну </h3></div>
+    <form class="input_form" action="add.php" method="post" name="form1">
+        <table class="table table-striped table-dark" border="0">
+            <tr>
+                <td>Название страны</td>
+                <td><input class="form_input" pattern="^[A-Za-zА-Яа-яЁё\s-]+$" class='fas fa-book' type="text"
+                           name="name"></td>
+            </tr>
+            <tr>
+                <td>Столица</td>
+                <td><input type="text" pattern="^[A-Za-zА-Яа-яЁё\s-]+$" name="capital"></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><input class='btn-success apply-btn' type="submit" name="Submit" value="Add"></td>
+            </tr>
+        </table>
+</div>
 </form>
 </body>
 </html>

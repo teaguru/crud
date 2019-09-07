@@ -1,17 +1,36 @@
 
 .input_form {
-	padding-left: 130px;
-	margin-left: 200px;
+
+
 }
 
 body {
-background-color: gray;
+    background-color: gray;
 }
+
 .form-input::hover {
-	background-color: red;
+    background-color: red;
 }
 
 .add-link {
-	margin-top: 30px;
-	padding-top: 50px;
+    margin-top: 30px;
+    color: #2d19ba;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #1d2124;
+}
+
+.menu {
+    display: flex;
+    align-content: center;
+    background-color: #5a6268;
+    justify-content: center;
+}
+
+.apply-btn {
+    width: 30%;
 }

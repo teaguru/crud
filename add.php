@@ -2,25 +2,28 @@
 //подключение к базе
 include_once("config.php");
 
-if(isset($_POST['Submit'])) {
+if (isset($_POST['Submit'])) {
     $name = htmlspecialchars($_POST['name'], ENT_QUOTES);
     $capital = htmlspecialchars($_POST['capital'], ENT_QUOTES);
 
 
     // проверим поля на пустоту
-    if(empty($name) || empty($capital)) {
+    if (empty($name) || empty($capital)) {
 
-        if(empty($name)) {
-            echo "<font color='red'>Name field is empty.</font><br/>";
+        if (empty($name)) {
+            ?>
+            <script> alert(('Введите название страны'));
+                window.location.replace("add.html");
+            </script> <?
         }
 
-        if(empty($capital)) {
-            echo "<font color='red'>Capital field is empty.</font><br/>";
+        if (empty($capital)) {
+            ?>
+            <script> alert(('Введите название столицы'));
+                window.location.replace("add.html");
+            </script> <?
         }
 
-
-        //ссылка на предыдующую страницу
-        echo "<br/><a href='javascript:self.history.back();'>Go Back</a>";
     } else {
         // при условии, что поля не пустые вносим данные в базу использую PDO
         $sql = "INSERT INTO country(countryname, capitalname) VALUES(:name, :capital)";
