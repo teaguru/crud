@@ -15,8 +15,8 @@ $result = $dbConn->query("SELECT * FROM country ORDER BY id DESC");
 
 <body>
 <div class="container">
-    <div class="menu">
-        <a href="add.html" class="active add-link">Добавление новой страны</a><br/><br/>
+    <div class="menu"><h2>
+        <a href="add.html" class="active add-link">Добавление новой страны</a><br/><br/></h2>
     </div>
 
     <table class="table table-striped table-dark" border=0>
@@ -32,8 +32,8 @@ $result = $dbConn->query("SELECT * FROM country ORDER BY id DESC");
             <?php
             while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
                 echo "<tr>";
-                echo "<td>" . $row['countryname'] . "</td>";
-                echo "<td>" . $row['capitalname'] . "</td>";
+                echo "<td>" . $row['country_name'] . "</td>";
+                echo "<td>" . $row['capital_name'] . "</td>";
 
                 echo "<td><a href=\"delete.php?id=$row[id]\" onClick=\"return confirm('Вы точно готовы удалить запись?')\">Удалить</a></td>";
             }

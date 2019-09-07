@@ -26,14 +26,24 @@ if (isset($_POST['Submit'])) {
 
     } else {
         // при условии, что поля не пустые вносим данные в базу использую PDO
-        $sql = "INSERT INTO country(countryname, capitalname) VALUES(:name, :capital)";
+        $sql = "INSERT INTO country(country_name, capital_name) VALUES(:name, :capital)";
         $query = $dbConn->prepare($sql);
         $query->bindparam(':name', $name);
         $query->bindparam(':capital', $capital);
         $query->execute();
-        //display success message
-        echo "<font color='green'>Data added successfully.";
-        echo "<br/><a href='index.php'>View Result</a>";
+        ?>
+        
+             <script charset="utf-8" src="js/toast.js"></script>
+             <script type="text/javascript">
+                new Toast({
+  message: 'Страна успешно добавленна!',
+  type: 'succsess'
+});
+                //window.location.replace("add.html");
+</script>
+        <?php
+        //echo "<font color='green'>Data added successfully.";
+        //echo "<br/><a href='index.php'>View Result</a>";
     }
 }
 ?>
