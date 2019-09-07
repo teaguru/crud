@@ -1,9 +1,3 @@
-<html>
-<head>
-    <title>Add Data</title>
-</head>
-
-<body>
 <?php
 //подключение к базе
 include_once("config.php");
@@ -34,10 +28,6 @@ if(isset($_POST['Submit'])) {
         $query->bindparam(':name', $name);
         $query->bindparam(':capital', $capital);
         $query->execute();
-
-        // Alternative to above bindparam and execute
-        // $query->execute(array(':name' => $name, ':email' => $email, ':age' => $age));
-
         //display success message
         echo "<font color='green'>Data added successfully.";
         echo "<br/><a href='index.php'>View Result</a>";
