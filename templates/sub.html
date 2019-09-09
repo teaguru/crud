@@ -1,0 +1,20 @@
+<!-- Subscription form -->
+</form>
+<button class="open-button" onclick="openForm()">Подпишитесь</button>
+
+<div class="form-popup" id="myForm" method="post">
+    <form action="../sub.php" method="post" class="form-container">
+        <h1>Подписаться</h1>
+
+        <label><b>Имя</b></label>
+        <input type="text" placeholder="Ваше имя" name="name_sub" required>
+
+        <label><b>Е-мейл</b></label>
+        <input type="text" placeholder="Ваш е-мейл" name="email" required>
+
+        <input type="submit" name="submit2" class="btn">Отправить</input>
+        <button type="button" class="btn cancel" onclick="closeForm()">Закрыть</button>
+    </form>
+</div>
+<!--  JS for Subscription form -->
+<script charset="utf-8" src="../js/subscribe.js"></script>

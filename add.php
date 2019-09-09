@@ -1,49 +1,35 @@
 <?php
 //подключение к базе
-include_once("config.php");
+include_once $_SERVER['DOCUMENT_ROOT'] . '/config/config.php';
 
 if (isset($_POST['Submit'])) {
     $name = htmlspecialchars($_POST['name'], ENT_QUOTES);
     $capital = htmlspecialchars($_POST['capital'], ENT_QUOTES);
 
-
-    // проверим поля на пустоту
+    //check for empty
     if (empty($name) || empty($capital)) {
 
         if (empty($name)) {
-            ?>
-            <script> alert(('Введите название страны'));
-                window.location.replace("add.html");
-            </script> <?
+            echo "<font color='red'>Введите название страны</font><br/>";
         }
-
-        if (empty($capital)) {
-            ?>
-            <script> alert(('Введите название столицы'));
-                window.location.replace("add.html");
-            </script> <?
+        if (empty($age)) {
+            echo "<font color='red'>Введите название стлицы.</font><br/>";
         }
-
+        //link to the previous page
+        echo "<br/><a href='javascript:self.history.back();'>Go Back</a>";
     } else {
-        // при условии, что поля не пустые вносим данные в базу использую PDO
-        $sql = "INSERT INTO country(country_name, capital_name) VALUES(:name, :capital)";
-        $query = $dbConn->prepare($sql);
+        // if all the fields are filled (not empty)
+        $query = $dbConn->prepare('INSERT INTO country(country_name, capital_name) VALUES(:name, :capital)');
         $query->bindparam(':name', $name);
         $query->bindparam(':capital', $capital);
-        $query->execute();
+        $query->execute(array(':name' => $name, ':capital' => $capital));
         ?>
-        
-             <script charset="utf-8" src="js/toast.js"></script>
-             <script type="text/javascript">
-                new Toast({
-  message: 'Страна успешно добавленна!',
-  type: 'succsess'
-});
-                //window.location.replace("add.html");
-</script>
+
+        <script charset="utf-8" src="js/toast.js"></script>
+
         <?php
-        //echo "<font color='green'>Data added successfully.";
-        //echo "<br/><a href='index.php'>View Result</a>";
+        echo "<font color='green'>Data added successfully.";
+        echo "<br/><a href='index.php'>Список стран</a>";
     }
 }
 ?>
